@@ -4,24 +4,46 @@ services:
 
   jumpbox:
     image: ubuntu:latest
+    container_name: jumpbox
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/jumpbox.Dockerfile
+    tty: true
     volumes:
-      - ./jumpbox:/home/ubuntu
-    command: /bin/bash
+      - .vol/jumpbox:/home
+    environment:
+      - SYS_NAME=jumpbox
 
-  server:
-    image: ubuntu:latest
-    volumes:
-      - ./server:/home/ubuntu
-    command: /bin/bash
+  # server:
+  #   image: ubuntu:latest
+  #   container_name: server
+  #   build: .
+  #   tty: true
+  #   volumes:
+  #     - .vol/server:/home/ubuntu
+  #   environment:
+  #     - SYS_NAME=server
 
-  node-0:
-    image: ubuntu:latest
-    volumes:
-      - ./node-0:/home/ubuntu
-    command: /bin/bash
+  # node-0:
+  #   image: ubuntu:latest
+  #   container_name: node-0
+  #   build: .
+  #   tty: true
+  #   volumes:
+  #     - .vol/node-0:/home/ubuntu
+  #   environment:
+  #     - SYS_NAME=node-0
 
-  node-1:
-    image: ubuntu:latest
-    volumes:
-      - ./node-1:/home/ubuntu
-    command: /bin/bash
+  # node-1:
+  #   image: ubuntu:latest
+  #   container_name: node-1
+  #   build: .
+  #   tty: true
+  #   volumes:
+  #     - .vol/node-1:/home/ubuntu
+  #   environment:
+  #     - SYS_NAME=node-1
+
+
+volumes:
+  vol:
