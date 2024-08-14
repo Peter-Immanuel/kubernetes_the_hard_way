@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+
+  jumpbox:
+    image: ubuntu:latest
+    volumes:
+      - ./jumpbox:/home/ubuntu
+    command: /bin/bash
+
+  server:
+    image: ubuntu:latest
+    volumes:
+      - ./server:/home/ubuntu
+    command: /bin/bash
+
+  node-0:
+    image: ubuntu:latest
+    volumes:
+      - ./node-0:/home/ubuntu
+    command: /bin/bash
+
+  node-1:
+    image: ubuntu:latest
+    volumes:
+      - ./node-1:/home/ubuntu
+    command: /bin/bash
